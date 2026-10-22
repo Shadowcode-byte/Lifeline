@@ -491,7 +491,7 @@ export default function Home() {
             transition={{
               duration: 0.5,
             }}
-            className="relative z-10 mx-auto w-full max-w-[1500px] px-5 py-7 sm:px-8 lg:px-12"
+            className="relative z-10 mx-auto w-full min-w-0 max-w-[1500px] overflow-hidden px-4 py-7 sm:px-8 lg:px-12"
           >
             {/* Situation header */}
             <div className="mb-7 flex flex-col justify-between gap-5 lg:flex-row lg:items-end">
@@ -520,9 +520,9 @@ export default function Home() {
               </button>
             </div>
 
-            <div className="grid gap-4 xl:grid-cols-[1.35fr_0.85fr]">
+            <div className="grid w-full min-w-0 grid-cols-1 gap-4 overflow-hidden xl:grid-cols-[minmax(0,1.35fr)_minmax(0,0.85fr)]">
               {/* Main workflow */}
-              <div className="space-y-4">
+              <div className="min-w-0 space-y-4">
                 <AgentPipeline
                   stages={stages}
                   complete={complete}
@@ -610,7 +610,7 @@ export default function Home() {
               </div>
 
               {/* Intelligence sidebar */}
-              <aside className="space-y-4 xl:sticky xl:top-5 xl:self-start">
+              <aside className="min-w-0 space-y-4 xl:sticky xl:top-5 xl:self-start">
                 <SituationIntelligence
                   analysis={analysis}
                   understandingWorking={

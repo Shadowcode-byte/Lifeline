@@ -22,20 +22,20 @@ export default function ProposedActions({
   hasFailure,
 }: ProposedActionsProps) {
   return (
-    <section className="rounded-[26px] border border-white/[0.075] bg-white/[0.025] p-5">
-      <div className="mb-5 flex items-center gap-2">
+    <section className="w-full min-w-0 overflow-hidden rounded-[26px] border border-white/[0.075] bg-white/[0.025] p-4 sm:p-5">
+      <div className="mb-5 flex min-w-0 items-center gap-2">
         <ListChecks
           size={15}
-          className="text-[#FF2E88]"
+          className="shrink-0 text-[#FF2E88]"
         />
 
-        <span className="text-[11px] font-medium text-white/65">
+        <span className="min-w-0 text-[11px] font-medium text-white/65">
           Proposed actions
         </span>
       </div>
 
       {actions && actions.length > 0 ? (
-        <div className="space-y-2.5">
+        <div className="w-full min-w-0 space-y-2.5">
           {actions.map((action, index) => (
             <motion.div
               key={action.id}
@@ -50,26 +50,26 @@ export default function ProposedActions({
               transition={{
                 delay: index * 0.07,
               }}
-              className="rounded-xl border border-white/[0.055] bg-black/10 p-3.5"
+              className="w-full min-w-0 overflow-hidden rounded-xl border border-white/[0.055] bg-black/10 p-3.5"
             >
-              <div className="flex gap-3">
+              <div className="flex min-w-0 items-start gap-3">
                 <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-lg bg-[#FF2E88]/[0.07] text-[#FF2E88]">
                   <span className="text-[9px] font-semibold">
                     {index + 1}
                   </span>
                 </div>
 
-                <div>
-                  <p className="text-[11px] font-medium text-white/70">
+                <div className="min-w-0 flex-1 overflow-hidden">
+                  <p className="max-w-full break-words text-[11px] font-medium leading-5 text-white/70 [overflow-wrap:anywhere]">
                     {action.title}
                   </p>
 
-                  <p className="mt-1 text-[9px] leading-4 text-white/38">
+                  <p className="mt-1 max-w-full break-words text-[9px] leading-4 text-white/38 [overflow-wrap:anywhere]">
                     {action.description}
                   </p>
 
                   <div className="mt-2">
-                    <span className="rounded-full border border-[#FF2E88]/10 bg-[#FF2E88]/[0.025] px-2 py-0.5 text-[7px] font-medium tracking-[0.1em] text-[#FF2E88]/55">
+                    <span className="inline-flex max-w-full rounded-full border border-[#FF2E88]/10 bg-[#FF2E88]/[0.025] px-2 py-0.5 text-[7px] font-medium tracking-[0.1em] text-[#FF2E88]/55">
                       PROPOSED
                     </span>
                   </div>
@@ -79,9 +79,9 @@ export default function ProposedActions({
           ))}
         </div>
       ) : (
-        <div className="flex min-h-[155px] flex-col items-center justify-center rounded-2xl border border-dashed border-white/[0.07] px-6 text-center">
+        <div className="flex min-h-[155px] w-full min-w-0 flex-col items-center justify-center overflow-hidden rounded-2xl border border-dashed border-white/[0.07] px-4 text-center sm:px-6">
           <div
-            className={`mb-3 flex h-9 w-9 items-center justify-center rounded-full ${
+            className={`mb-3 flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${
               actionsWorking
                 ? "bg-[#FF2E88]/[0.07] text-[#FF2E88]"
                 : "bg-white/[0.035] text-white/25"
@@ -97,7 +97,7 @@ export default function ProposedActions({
             />
           </div>
 
-          <p className="max-w-[230px] text-[10px] leading-5 text-white/38">
+          <p className="max-w-full break-words text-[10px] leading-5 text-white/38 [overflow-wrap:anywhere]">
             {actionsWorking
               ? "The Action Agent is generating concrete next steps."
               : hasFailure

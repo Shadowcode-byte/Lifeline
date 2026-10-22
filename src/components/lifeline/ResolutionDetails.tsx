@@ -50,10 +50,10 @@ export default function ResolutionDetails({
     useState(false);
 
   return (
-    <>
+    <div className="w-full min-w-0 space-y-4 overflow-hidden">
       {/* Compact agent insights */}
       {(analysis || context) && (
-        <section className="overflow-hidden rounded-[26px] border border-white/[0.075] bg-white/[0.022]">
+        <section className="w-full min-w-0 overflow-hidden rounded-[26px] border border-white/[0.075] bg-white/[0.022]">
           {analysis && (
             <ExpandableSection
               title="Understanding output"
@@ -66,7 +66,7 @@ export default function ResolutionDetails({
                 )
               }
             >
-              <div className="grid gap-3 sm:grid-cols-2">
+              <div className="grid w-full min-w-0 grid-cols-1 gap-3 sm:grid-cols-2">
                 <InfoCard
                   label="INTENT"
                   value={analysis.intent}
@@ -87,7 +87,7 @@ export default function ResolutionDetails({
                   wide
                 />
 
-                <div className="rounded-2xl border border-white/[0.055] bg-black/10 p-4 sm:col-span-2">
+                <div className="min-w-0 overflow-hidden rounded-2xl border border-white/[0.055] bg-black/10 p-4 sm:col-span-2">
                   <p className="mb-2 text-[8px] font-semibold tracking-[0.14em] text-white/35">
                     CONSTRAINTS
                   </p>
@@ -120,7 +120,7 @@ export default function ResolutionDetails({
               }
               borderTop={!!analysis}
             >
-              <div className="grid gap-4 md:grid-cols-3">
+              <div className="grid w-full min-w-0 grid-cols-1 gap-4 md:grid-cols-3">
                 <SignalGroup
                   title="PRIORITIES"
                   items={context.priorities}
@@ -142,7 +142,7 @@ export default function ResolutionDetails({
         </section>
       )}
 
-      {/* Resolution strategy stays prominent */}
+      {/* Resolution strategy */}
       <AnimatePresence>
         {plan && (
           <motion.section
@@ -154,27 +154,27 @@ export default function ResolutionDetails({
               opacity: 1,
               y: 0,
             }}
-            className="rounded-[26px] border border-[#00A8E8]/15 bg-[#00A8E8]/[0.025] p-5 sm:p-6"
+            className="w-full min-w-0 overflow-hidden rounded-[26px] border border-[#00A8E8]/15 bg-[#00A8E8]/[0.025] p-4 sm:p-6"
           >
-            <div className="mb-4 flex items-center gap-2">
+            <div className="mb-4 flex min-w-0 items-center gap-2">
               <Compass
                 size={15}
-                className="text-[#00A8E8]"
+                className="shrink-0 text-[#00A8E8]"
               />
 
-              <span className="text-[11px] font-medium text-white/75">
+              <span className="min-w-0 text-[11px] font-medium text-white/75">
                 Resolution strategy
               </span>
 
               <CompletedPill />
             </div>
 
-            <p className="max-w-4xl text-[12px] leading-6 text-white/58">
+            <p className="max-w-full break-words text-[12px] leading-6 text-white/58 [overflow-wrap:anywhere]">
               {plan.strategy}
             </p>
 
             <div
-              className={`mt-5 grid gap-3 ${
+              className={`mt-5 grid w-full min-w-0 grid-cols-1 gap-3 ${
                 plan.steps.length === 3
                   ? "md:grid-cols-3"
                   : plan.steps.length === 4
@@ -185,9 +185,9 @@ export default function ResolutionDetails({
               {plan.steps.map((step) => (
                 <div
                   key={step.id}
-                  className="rounded-2xl border border-white/[0.065] bg-black/15 p-4"
+                  className="w-full min-w-0 overflow-hidden rounded-2xl border border-white/[0.065] bg-black/15 p-4"
                 >
-                  <div className="mb-2 flex items-center justify-between gap-3">
+                  <div className="mb-2 flex min-w-0 flex-wrap items-center justify-between gap-2">
                     <span className="text-[9px] font-medium tracking-[0.12em] text-[#00A8E8]/80">
                       STEP {step.id}
                     </span>
@@ -197,11 +197,11 @@ export default function ResolutionDetails({
                     />
                   </div>
 
-                  <p className="text-[12px] font-medium text-white/80">
+                  <p className="break-words text-[12px] font-medium text-white/80 [overflow-wrap:anywhere]">
                     {step.title}
                   </p>
 
-                  <p className="mt-2 text-[10px] leading-5 text-white/48">
+                  <p className="mt-2 break-words text-[10px] leading-5 text-white/48 [overflow-wrap:anywhere]">
                     {step.description}
                   </p>
                 </div>
@@ -226,14 +226,14 @@ export default function ResolutionDetails({
             transition={{
               duration: 0.45,
             }}
-            className="relative overflow-hidden rounded-[28px] border border-[#FF2E88]/20 bg-[#FF2E88]/[0.035] p-6 sm:p-7"
+            className="relative w-full min-w-0 overflow-hidden rounded-[28px] border border-[#FF2E88]/20 bg-[#FF2E88]/[0.035] p-4 sm:p-7"
           >
             <div className="pointer-events-none absolute right-[-80px] top-[-80px] h-56 w-56 rounded-full bg-[#FF2E88]/[0.08] blur-[70px]" />
 
             <div className="pointer-events-none absolute bottom-[-100px] left-[20%] h-52 w-52 rounded-full bg-[#00A8E8]/[0.04] blur-[80px]" />
 
-            <div className="relative flex items-start gap-4">
-              <div className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-[#FF2E88]/20 bg-[#FF2E88]/[0.08]">
+            <div className="relative flex min-w-0 items-start gap-3 sm:gap-4">
+              <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#FF2E88]/20 bg-[#FF2E88]/[0.08] sm:h-11 sm:w-11">
                 <motion.div
                   className="absolute h-7 w-7 rounded-full bg-[#FF2E88]/10 blur-lg"
                   animate={{
@@ -249,18 +249,18 @@ export default function ResolutionDetails({
                 <ActivityMark />
               </div>
 
-              <div className="min-w-0">
-                <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-[10px] font-semibold tracking-[0.16em] text-[#FF2E88]">
+              <div className="min-w-0 flex-1 overflow-hidden">
+                <div className="flex min-w-0 flex-wrap items-center gap-2">
+                  <span className="break-words text-[9px] font-semibold tracking-[0.14em] text-[#FF2E88] sm:text-[10px] sm:tracking-[0.16em]">
                     LIFELINE RESPONSE
                   </span>
 
-                  <span className="rounded-full border border-white/[0.07] bg-black/10 px-2 py-0.5 text-[8px] tracking-[0.1em] text-white/35">
+                  <span className="max-w-full rounded-full border border-white/[0.07] bg-black/10 px-2 py-0.5 text-[7px] tracking-[0.08em] text-white/35 sm:text-[8px] sm:tracking-[0.1em]">
                     SIMULATED ALEXA+
                   </span>
                 </div>
 
-                <p className="mt-4 max-w-4xl text-[15px] font-medium leading-7 text-white/82 sm:text-[16px] sm:leading-8">
+                <p className="mt-4 max-w-full break-words text-[14px] font-medium leading-7 text-white/82 [overflow-wrap:anywhere] sm:text-[16px] sm:leading-8">
                   “{finalResponse}”
                 </p>
               </div>
@@ -268,7 +268,7 @@ export default function ResolutionDetails({
           </motion.section>
         )}
       </AnimatePresence>
-    </>
+    </div>
   );
 }
 
@@ -291,32 +291,32 @@ function ExpandableSection({
 }) {
   return (
     <div
-      className={
+      className={`w-full min-w-0 overflow-hidden ${
         borderTop
           ? "border-t border-white/[0.055]"
           : ""
-      }
+      }`}
     >
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={open}
-        className="flex w-full items-center gap-3 p-5 text-left transition hover:bg-white/[0.015] sm:px-6"
+        className="flex w-full min-w-0 items-center gap-3 overflow-hidden p-4 text-left transition hover:bg-white/[0.015] sm:px-6 sm:py-5"
       >
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl border border-[#00A8E8]/15 bg-[#00A8E8]/[0.055] text-[#00A8E8]">
           <Icon size={15} />
         </div>
 
-        <div className="min-w-0 flex-1">
-          <div className="flex items-center gap-2">
-            <p className="text-[11px] font-medium text-white/72">
+        <div className="min-w-0 flex-1 overflow-hidden">
+          <div className="flex min-w-0 items-center gap-2">
+            <p className="min-w-0 truncate text-[11px] font-medium text-white/72">
               {title}
             </p>
 
             <CompletedPill />
           </div>
 
-          <p className="mt-1 truncate text-[10px] text-white/38">
+          <p className="mt-1 max-w-full truncate text-[10px] text-white/38">
             {summary}
           </p>
         </div>
@@ -328,7 +328,7 @@ function ExpandableSection({
           transition={{
             duration: 0.2,
           }}
-          className="text-white/30"
+          className="shrink-0 text-white/30"
         >
           <ChevronDown size={16} />
         </motion.div>
@@ -352,9 +352,9 @@ function ExpandableSection({
             transition={{
               duration: 0.25,
             }}
-            className="overflow-hidden"
+            className="w-full min-w-0 overflow-hidden"
           >
-            <div className="px-5 pb-5 sm:px-6 sm:pb-6">
+            <div className="w-full min-w-0 overflow-hidden px-4 pb-4 sm:px-6 sm:pb-6">
               {children}
             </div>
           </motion.div>
@@ -377,7 +377,7 @@ function InfoCard({
 }) {
   return (
     <div
-      className={`rounded-2xl border border-white/[0.06] bg-black/10 p-4 ${
+      className={`w-full min-w-0 overflow-hidden rounded-2xl border border-white/[0.06] bg-black/10 p-4 ${
         wide ? "sm:col-span-2" : ""
       }`}
     >
@@ -392,7 +392,7 @@ function InfoCard({
       </p>
 
       <p
-        className={`text-[10px] leading-5 ${
+        className={`max-w-full break-words text-[10px] leading-5 [overflow-wrap:anywhere] ${
           rose
             ? "text-[#FF2E88]/90"
             : "text-white/58"
@@ -414,7 +414,7 @@ function SignalGroup({
   rose?: boolean;
 }) {
   return (
-    <div className="rounded-2xl border border-white/[0.06] bg-black/10 p-4">
+    <div className="w-full min-w-0 overflow-hidden rounded-2xl border border-white/[0.06] bg-black/10 p-4">
       <p
         className={`mb-3 text-[8px] font-semibold tracking-[0.14em] ${
           rose
@@ -425,7 +425,7 @@ function SignalGroup({
         {title}
       </p>
 
-      <div className="space-y-2">
+      <div className="min-w-0 space-y-2">
         {items.map((item, index) => (
           <BulletLine
             key={`${title}-${index}`}
@@ -446,7 +446,7 @@ function BulletLine({
   rose?: boolean;
 }) {
   return (
-    <div className="flex items-start gap-2">
+    <div className="flex min-w-0 items-start gap-2">
       <span
         className={`mt-[7px] h-1 w-1 shrink-0 rounded-full ${
           rose
@@ -455,7 +455,7 @@ function BulletLine({
         }`}
       />
 
-      <p className="text-[9px] leading-4 text-white/50">
+      <p className="min-w-0 flex-1 break-words text-[9px] leading-4 text-white/50 [overflow-wrap:anywhere]">
         {text}
       </p>
     </div>
@@ -464,7 +464,7 @@ function BulletLine({
 
 function CompletedPill() {
   return (
-    <span className="ml-auto flex shrink-0 items-center gap-1 rounded-full border border-[#00A8E8]/12 bg-[#00A8E8]/[0.04] px-2 py-1 text-[8px] font-medium tracking-[0.08em] text-[#00A8E8]/75">
+    <span className="ml-auto flex shrink-0 items-center gap-1 rounded-full border border-[#00A8E8]/12 bg-[#00A8E8]/[0.04] px-2 py-1 text-[7px] font-medium tracking-[0.06em] text-[#00A8E8]/75 sm:text-[8px] sm:tracking-[0.08em]">
       <Check size={9} />
       COMPLETE
     </span>
@@ -478,7 +478,7 @@ function PriorityBadge({
 }) {
   return (
     <span
-      className={`rounded-full border px-2 py-0.5 text-[8px] font-medium tracking-[0.08em] ${
+      className={`shrink-0 rounded-full border px-2 py-0.5 text-[8px] font-medium tracking-[0.08em] ${
         priority === "high"
           ? "border-[#FF2E88]/20 bg-[#FF2E88]/[0.05] text-[#FF2E88]/85"
           : priority === "medium"
