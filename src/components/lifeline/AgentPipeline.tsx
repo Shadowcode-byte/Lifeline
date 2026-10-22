@@ -109,14 +109,14 @@ export default function AgentPipeline({
       </div>
 
       {/* Progress rail */}
-      <div className="mt-6 flex items-center gap-2">
+      <div className="mt-6 grid w-full min-w-0 grid-cols-4 gap-1.5 sm:gap-2">
         {stageDefinitions.map((stage, index) => {
           const status = stages[stage.id];
 
           return (
             <div
               key={stage.id}
-              className="flex flex-1 items-center gap-2"
+              className="flex min-w-0 items-center gap-1 sm:gap-2"
             >
               <div
                 className={`h-1.5 flex-1 rounded-full transition-all duration-500 ${
